@@ -15,8 +15,18 @@ margins, dydx(*)
 
 
 2010
-logit cat_oop_40 consumption female grupo_etario_cod bas1 bas2 bas3 secund superior semiurban rural senior_ratio junior_ratio employed_ratio unemployed_ratio retired_ratio incapacity_ratio 
+logistic cat_oop_40 consumption female grupo_etario_cod bas1 bas2 bas3 secund superior total_members Norte Centro Lisboa Algarve Azores Madeira semiurban rural senior_ratio junior_ratio employed_ratio unemployed_ratio retired_ratio incapacity_ratio
 
-logistic
+* 3. Get the AMEs with p-values (for your probability reporting)
+margins, dydx(*)
+
+2015
+
+logistic cat_oop_40 consumption female Age_num bas1 bas2 bas3 secund superior total_members senior_ratio junior_ratio semiurban rural Norte Centro Lisboa Algarve Azores Madeira employed_ratio unemployed_ratio retired_ratio incapacity_ratio 
+
+margins, dydx(*)
+
+2022
+logistic cat_oop_40 consumption female GrpEtario bas1 bas2 secund superior N_Individuals senior_ratio junior_ratio semiurban rural Norte Centro Lisboa Algarve Azores Madeira employed_ratio unemployed_ratio retired_ratio incapacity_ratio 
 
 margins, dydx(*)
