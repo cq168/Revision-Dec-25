@@ -87,7 +87,54 @@ forvalues i = 1/5 {
 
 2015
 
+xtile quintile = consumption, nq(5)
+
+// Label them for clarity
+label define q_lab 1 "Q1 (Lowest)" 2 "Q2" 3 "Q3" 4 "Q4" 5 "Q5 (Highest)"
+label values quintile q_lab
+
+forvalues i = 1/5 {
+    display _newline(2) "===================================================="
+    display "RESULTS FOR CONSUMPTION QUINTILE: `i'"
+    display "===================================================="
+    
+    * Display Raw Coefficients
+    display "--- [1] LOGIT COEFFICIENTS ---"
+    logistic cat_oop_40 consumption female Age_num bas1 bas2 bas3 secund superior N_Individuals senior_ratio junior_ratio rural semiurban Norte Centro Lisboa Algarve Azores Madeira unemployed_ratio employed_ratio retired_ratio incapacity_ratio if quintile == `i', coef
+    
+    * Display Odds Ratios
+    display "--- [2] ODDS RATIOS ---"
+    logistic cat_oop_40 consumption female Age_num bas1 bas2 bas3 secund superior N_Individuals senior_ratio junior_ratio rural semiurban Norte Centro Lisboa Algarve Azores Madeira unemployed_ratio employed_ratio retired_ratio incapacity_ratio if quintile == `i'
+    
+    * Display Average Marginal Effects (AME)
+    display "--- [3] MARGINAL EFFECTS ---"
+    margins, dydx(*)
+}
+
+2022
 
 
+xtile quintile = consumption, nq(5)
 
+// Label them for clarity
+label define q_lab 1 "Q1 (Lowest)" 2 "Q2" 3 "Q3" 4 "Q4" 5 "Q5 (Highest)"
+label values quintile q_lab
 
+forvalues i = 1/5 {
+display _newline(2) "===================================================="
+    display "RESULTS FOR CONSUMPTION QUINTILE: `i'"
+    display "===================================================="
+
+    * Display Raw Coefficients
+      display "--- [1] LOGIT COEFFICIENTS ---"
+    display "RESULTS FOR CONSUMPTION QUINTILE: `i'"
+    logistic cat_oop_40 consumption female GrpEtario bas1 bas2 secund superior N_Individuals senior_ratio junior_ratio rural semiurban Norte Centro Lisboa Algarve Azores Madeira employed_ratio unemployed_ratio retired_ratio incapacity_ratio if quintile == `i', coef
+
+  * Display Odds Ratios
+    display "--- [2] ODDS RATIOS ---"
+    logistic cat_oop_40 consumption female GrpEtario bas1 bas2 secund superior N_Individuals senior_ratio junior_ratio rural semiurban Norte Centro Lisboa Algarve Azores Madeira employed_ratio unemployed_ratio retired_ratio incapacity_ratio if quintile == `i'
+
+    * Display Average Marginal Effects (AME)
+    display "--- [3] MARGINAL EFFECTS ---"
+    margins, dydx(*)
+}
