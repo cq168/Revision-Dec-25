@@ -232,3 +232,127 @@ forvalues i = 1/5 {
     margins, dydx(*)
 }
 
+
+Insurance for 2005
+gen insured = desp_1253 > 0 if !missing(desp_1253)
+label define insured 0 "Uninsured" 1 "Insured"
+label values insured insured
+
+xtile cons_q = consumption, nq(5)
+label define cons_q 1 "Poorest" 2 "Q2" 3 "Q3" 4 "Q4" 5 "Richest"
+label values cons_q cons_q
+
+tab cons_q cat_oop_40, row
+tab cons_q if cat_oop_40 ==1
+tab insured if cat_oop_40 ==1
+tab insured cat_oop_40, row
+tab cons_q insured if cat_oop_40 ==1, row
+logit cat_oop_40 i.cons_q i.insured
+margins cons_q insured
+tab cons_q cat_oop_40, row
+tab cons_q if cat_oop_40 ==1
+tab insured if cat_oop_40 ==1
+
+cd "/Users/tzikieu/Desktop/Paper/Computations/Revision December"
+log using "CHE_Results.log", replace text
+gen insured = desp_1253 > 0 if !missing(desp_1253)
+label define insured 0 "Uninsured" 1 "Insured"
+label values insured insured
+
+xtile cons_q = consumption, nq(5)
+label define cons_q 1 "Poorest" 2 "Q2" 3 "Q3" 4 "Q4" 5 "Richest"
+label values cons_q cons_q
+
+tab cons_q cat_oop_40, row
+tab cons_q if cat_oop_40 ==1
+tab insured if cat_oop_40 ==1
+tab insured cat_oop_40, row
+tab cons_q insured if cat_oop_40 ==1, row
+logit cat_oop_40 i.cons_q i.insured
+margins cons_q insured
+tab cons_q cat_oop_40, row
+tab cons_q if cat_oop_40 ==1
+tab insured if cat_oop_40 ==1
+log close
+
+
+
+Insurance for 2010
+
+cd "/Users/tzikieu/Desktop/Paper/Computations/Revision December"
+
+log using "CHE_Results2010.log", replace text
+
+gen insured = desp_12531 > 0 if !missing(desp_12531)
+label define insured 0 "Uninsured" 1 "Insured"
+label values insured insured
+
+xtile cons_q = consumption, nq(5)
+label define cons_q 1 "Poorest" 2 "Q2" 3 "Q3" 4 "Q4" 5 "Richest"
+label values cons_q cons_q
+
+tab cons_q cat_oop_40, row
+tab cons_q if cat_oop_40==1
+tab insured if cat_oop_40==1
+tab insured cat_oop_40, row
+tab cons_q insured if cat_oop_40==1, row
+logit cat_oop_40 i.cons_q i.insured
+margins cons_q insured
+tab cons_q cat_oop_40, row
+tab cons_q if cat_oop_40==1
+tab insured if cat_oop_40==1
+
+log close
+
+2015
+cd "/Users/tzikieu/Desktop/Paper/Computations/Revision December"
+
+log using "CHE_Results2015.log", replace text
+
+gen insured = desp_1253 > 0 if !missing(desp_1253)
+label define insured 0 "Uninsured" 1 "Insured"
+label values insured insured
+
+xtile cons_q = consumption, nq(5)
+label define cons_q 1 "Poorest" 2 "Q2" 3 "Q3" 4 "Q4" 5 "Richest"
+label values cons_q cons_q
+
+tab cons_q cat_oop_40, row
+tab cons_q if cat_oop_40==1
+tab insured if cat_oop_40==1
+tab insured cat_oop_40, row
+tab cons_q insured if cat_oop_40==1, row
+logit cat_oop_40 i.cons_q i.insured
+margins cons_q insured
+tab cons_q cat_oop_40, row
+tab cons_q if cat_oop_40==1
+tab insured if cat_oop_40==1
+
+log close
+
+
+insurance2022
+cd "/Users/tzikieu/Desktop/Paper/Computations/Revision December"
+
+log using "CHE_Results2022.log", replace text
+
+gen insured = desp_1212 > 0 if !missing(desp_1212)
+label define insured 0 "Uninsured" 1 "Insured"
+label values insured insured
+
+xtile cons_q = consumption, nq(5)
+label define cons_q 1 "Poorest" 2 "Q2" 3 "Q3" 4 "Q4" 5 "Richest"
+label values cons_q cons_q
+
+tab cons_q cat_oop_40, row
+tab cons_q if cat_oop_40==1
+tab insured if cat_oop_40==1
+tab insured cat_oop_40, row
+tab cons_q insured if cat_oop_40==1, row
+logit cat_oop_40 i.cons_q i.insured
+margins cons_q insured
+tab cons_q cat_oop_40, row
+tab cons_q if cat_oop_40==1
+tab insured if cat_oop_40==1
+
+log close
