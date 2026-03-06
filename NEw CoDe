@@ -7,6 +7,16 @@ logit cat_oop_40 consumption female grupo_etario_cod bas1 bas2 bas3 secund super
       N_Individuals senior_ratio junior_ratio rural semiurban Norte Centro Lisboa ///
       Algarve Azores Madeira unemployed_ratio employed_ratio retired_ratio incapacity_ratio
 
+Korrektur mit SPSS
+LOGISTIC REGRESSION VARIABLES cat_oop_40
+  /METHOD=ENTER 
+    grupo_etario_cod consumption female grupo_etario_cod bas1 bas2 bas3 secund superior
+    N_Individuals senior_ratio junior_ratio rural semiurban Norte Centro Lisboa
+    Algarve Azores Madeira unemployed_ratio employed_ratio retired_ratio incapacity_ratio
+  /PRINT=CI(95) GOODFIT
+  /CRITERIA=PIN(.05) POUT(.10) ITERATE(20) CUT(.5).
+
+
 * 2. Get the Odds Ratios (for your relative risk reporting)
 logistic
 
